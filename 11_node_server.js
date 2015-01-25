@@ -1,3 +1,6 @@
+// A basic node.js server
+// save this as server.js and run it via node server.js
+//
 var http = require("http");
 var port = 3000;
 var serverUrl = "localhost";
