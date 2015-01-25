@@ -1,0 +1,31 @@
+# Create a simple Ruby/Sinatra web site
+#
+# Install bundler
+mkdir rubysite
+gem install bundler
+ 
+
+# create Gemfile with
+source 'https://rubygems.org'
+gem 'sinatra'
+ 
+
+# run bundler
+bundle install
+ 
+
+# create server.rb with
+require 'sinatra'
+ 
+get '/hi' do
+"Hello World! #{Time.now}"
+end
+ 
+
+# run it
+ruby server.rb
+
+
+# test it
+curl localhost:4567/hi
+

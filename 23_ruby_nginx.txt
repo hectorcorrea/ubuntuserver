@@ -1,0 +1,25 @@
+# create /etc/nginx/conf.d/rubysite.conf with the following
+
+# notice that these port numbers match with the ports
+# that we selected we ran thin config
+#
+upstream ruby_backend {
+  server 127.0.0.1:5000;
+  server 127.0.0.1:5001;
+  server 127.0.0.1:5002;
+}
+ 
+server {
+  listen 80;
+  server_name rubysony;
+ 
+  #charset koi8-r;
+  #access_log /var/log/nginx/log/host.access.log main;
+ 
+  location / {
+    #proxy_set_header Host $host;
+    #proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_pass http://ruby_backend;
+    break;
+  }
+} 
