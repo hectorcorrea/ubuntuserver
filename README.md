@@ -9,8 +9,7 @@ Steps to setup an Ubuntu Server to host Node.js and Ruby on Rails web sites. The
 * Ruby (from source via ruby-install)
   * chruby to select the current ruby (Ruby, gems, paths)
   * thin (app server for Ruby sites)
-
+  * Rails
 
 TODO: 
-* Rails
 * Upstart script for Node.js web site and Rails web site.
