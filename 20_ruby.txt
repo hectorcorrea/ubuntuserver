@@ -1,0 +1,36 @@
+# Install Ruby from source (via ruby-install)
+#
+# Reference: http://ryanbigg.com/2014/10/ubuntu-ruby-ruby-install-chruby-and-you/
+ 
+# Download Ubuntu tools
+sudo apt-get install build-essential
+ 
+# Install ruby-install
+wget -O ruby-install-0.5.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.5.0.tar.gz
+tar -xzvf ruby-install-0.5.0.tar.gz
+cd ruby-install-0.5.0/
+sudo make install
+ 
+ruby-install -V
+ 
+ 
+# Install Ruby, pick one. This takes a while.
+ruby-install ruby 2.1.3
+ruby-install ruby 2.1.5
+ruby-install ruby 2.2.0
+
+
+ 
+# Download and install chruby
+wget -O chruby-0.3.8.tar.gz https://github.com/postmodern/chruby/archive/v0.3.8.tar.gz
+tar -xzvf chruby-0.3.8.tar.gz
+cd chruby-0.3.8/
+sudo make install
+ 
+# Add this at the end of ~/.bashrc
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+ 
+# Create ~/.ruby-version with
+ruby-2.1.3 
+
