@@ -1,0 +1,16 @@
+# Enabling Wifi
+# Reference: http://askubuntu.com/questions/16584/how-to-connect-and-disconnect-to-a-network-manually-in-terminal
+
+# run this the first time to create a config file
+iwconfig
+ifconfig wlan0 up
+wpa_passphrase networkid password > /etc/wifi.conf
+ 
+# run the following to connect to the wifi and get an IP address
+# put these commands inside /etc/rc.local for them to be executed on boot
+ifconfig wlan0 up
+wpa_supplicant -B -iwlan0 -c/etc/wifi.conf -Dwext
+dhclient wlan0
+ 
+# install SSH server
+sudo apt-get install openssh-server 
