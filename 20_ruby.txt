@@ -33,9 +33,12 @@ sudo make install
 # Enable chruby system-wide
 # Create file /etc/profile.d/chruby.sh with the following:
 #
+# This does NOT enable it for root in the init scripts
+#
 if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
   source /usr/local/share/chruby/chruby.sh
 fi
+
 
 # For an individual user/session
 # Add this at the end of ~/.bashrc
@@ -45,5 +48,6 @@ fi
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
  
+
 # To set a default version of ruby, create ~/.ruby-version with
 ruby-2.2.0 
