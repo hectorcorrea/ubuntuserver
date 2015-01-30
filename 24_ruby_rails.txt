@@ -10,23 +10,15 @@ cd ~/src
 git clone https://github.com/hectorcorrea/hkrails.git
 
 
-# Hook thin to the app. 
-# This is required because the app is not yet configured to use thin in GitHub.
-cd ~/src/hkrails
-add thin to Gemfile
-bundle install
-update config/secrets.yml to have a key for production
-
-bundle exec thin config -C myapp.yml -s2 -p 5100 -e production
-
-
 # Deploy it
+# TODO: backup production DB first
 cd 
-cp -r src/hkrails/ .
+rm -rf ~/hkrails/
+cp -r ~/src/hkrails/ .
 
 
 # Install gems locally.
-cd hkrails/
+cd ~/hkrails/
 bundle install --deployment
 
 
@@ -36,6 +28,10 @@ bundle exec rake assets:precompile
 
 # Migrate the DB
 RAILS_ENV=production bundle exec rake db:migrate
+
+
+# Setup environment variable SECRET_KEY_BASE_HKRAILS
+export SECRET_KEY_BASE_HKRAILS=<secret value goes here>
 
 
 # Run it (standalone)
