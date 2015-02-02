@@ -1,24 +1,19 @@
 # Set up my Rail app
-#
+
+
 # Install sqlite dev tools.
 # (needed only the first time)
 sudo apt-get install libsqlite3-dev
 
 
-# get the source code
-cd ~/src
+# Get the source code
+cd
 git clone https://github.com/hectorcorrea/hkrails.git
-
-
-# Deploy it
-# TODO: backup production DB first
-cd 
-rm -rf ~/hkrails/
-cp -r ~/src/hkrails/ .
 
 
 # Install gems locally.
 cd ~/hkrails/
+gem install bundler
 bundle install --deployment
 
 
@@ -39,5 +34,14 @@ RAILS_ENV=production bundle exec rails server
 
 
 # Run it (via thin)
-RAILS_ENV=production bundle exec thin start -C myapp.yml
-RAILS_ENV=production bundle exec thin stop -C myapp.yml
+RAILS_ENV=production bundle exec thin start -C thin.yml
+RAILS_ENV=production bundle exec thin stop -C thin.yml
+
+
+# To update the site
+cd ~/hkrails
+git pull
+bundle install --deployment
+bundle exec rake assets:precompile
+RAILS_ENV=production bundle exec rake db:migrate
+

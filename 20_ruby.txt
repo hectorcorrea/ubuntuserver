@@ -14,21 +14,41 @@ sudo make install
 ruby-install -V
  
  
-# Install Ruby, pick one. This takes a while.
-ruby-install ruby 2.1.5
+# Install Ruby. This takes a while.
 ruby-install ruby 2.2.0
 
 
 # Install chruby
 #
 # Reference: https://github.com/postmodern/chruby
-
+#
 # Download and install chruby
 wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
 tar -xzvf chruby-0.3.9.tar.gz
 cd chruby-0.3.9/
 sudo make install
  
+
+# To set a default ruby when logging in
+# add this to ~/.bashrc
+#
+# chruby.sh sets the path and environment variables
+# requried by ruby like GEM_ROOT and GEM_PATH
+source /usr/local/share/chruby/chruby.sh
+chruby 2.2.0
+
+
+# if you have many versions of Ruby on the server
+# and want to automatically switch to a specific
+# version by project you an also source auto.sh 
+# add this to ~/.bashrc
+source /usr/local/share/chruby/auto.sh
+
+
+# To set a default version of ruby, create ~/.ruby-version 
+# this only works if you use auto.sh (see above)
+echo "ruby-2.2.0" > ~/.ruby-version
+
 
 # Enable chruby system-wide
 # Create file /etc/profile.d/chruby.sh with the following:
@@ -37,17 +57,5 @@ sudo make install
 #
 if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
   source /usr/local/share/chruby/chruby.sh
+  chruby 2.2.0
 fi
-
-
-# For an individual user/session
-# Add this at the end of ~/.bashrc
-# 
-# chruby.sh is the script that can be used to set the current ruby.
-# auto.sh is only needed if you want to automatically switch to different versions of ruby base on .ruby_version 
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
- 
-
-# To set a default version of ruby, create ~/.ruby-version with
-ruby-2.2.0 
