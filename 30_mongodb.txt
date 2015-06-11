@@ -14,3 +14,10 @@ sudo apt-get update
 
 # 4
 sudo apt-get install -y mongodb-org
+
+
+# 5 - backing up a database
+mongodump -d dbname -o foldername 
+
+# 6 - restoring a database
+mongorestore -d dbname --drop folder/to/data
