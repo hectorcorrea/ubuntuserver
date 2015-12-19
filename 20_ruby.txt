@@ -42,6 +42,8 @@ source /usr/local/share/chruby/chruby.sh
 chruby 2.2.0
 
 
+## Not sure I need any of this...
+
 # if you have many versions of Ruby on the server
 # and want to automatically switch to a specific
 # version by project you an also source auto.sh
