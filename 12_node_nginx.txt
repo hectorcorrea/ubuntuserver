@@ -1,8 +1,7 @@
 # create /etc/nginx/conf.d/nodesite.conf with the following
-
 server {
   listen       80;
-  server_name  nodesony;
+  server_name  ubuntuserver;
 
   #charset koi8-r;
   #access_log  /var/log/nginx/log/host.access.log  main;
@@ -21,10 +20,18 @@ server {
 include /etc/nginx/conf.d/*.conf;
 
 
-# reload nginx 
+# reload nginx
 sudo service nginx reload
 
 
-# stop/start nginx 
+# stop/start nginx
 sudo service nginx stop
 sudo service nginx start
+
+
+# On the ubuntuserver, run `node server.js`
+
+# On you local machine, add an entry to /etc/host to point to ubuntuserver
+# and browse to http://ubuntuserver
+
+
