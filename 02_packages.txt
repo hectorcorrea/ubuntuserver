@@ -2,9 +2,13 @@
 
 
 # install SSH server
-sudo apt-get install openssh-server 
+sudo apt-get install openssh-server
 
 
 # install utilities
 sudo apt-get install git
 sudo apt-get install nmon
+
+
+# Check your Ubuntu version
+lsb_release -a
