@@ -1,0 +1,23 @@
+# HectorCorrea.com
+
+# Get the code
+git clone https://github.com/hectorcorrea/hectorcorrea.com.git
+cd hectorcorrea.com
+npm install
+
+
+# Hook to nginx
+cp etc/nginx/conf.d/hectorcorrea.com /etc/nginx/conf.d/
+sudo service nginx reload
+
+
+# Restore the DB
+
+
+# Init script
+cp etc/init/hectorcorrea.conf /etc/init/hectorcorrea.conf
+start hectorcorrea
+restart hectorcorrea
+
+# Test it
+curl localhost:3000/blog

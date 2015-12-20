@@ -1,0 +1,23 @@
+# Las Delicias
+
+# Get the code
+git clone https://github.com/hectorcorrea/cooking.git
+cd cooking
+npm install
+
+
+# Hook to nginx
+cp etc/nginx/conf.d/cooking.com /etc/nginx/conf.d/
+sudo service nginx reload
+
+
+# Restore the DB
+
+
+# Init script
+cp etc/init/cooking.conf /etc/init/cooking.conf
+start cooking
+restart cooking
+
+# Test it locally
+curl localhost:3002
