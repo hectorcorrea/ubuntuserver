@@ -1,0 +1,10 @@
+# Get the Go source code (optional)
+cd
+mkdir src
+cd src
+git clone https://github.com/hectorcorrea/hectorcorrea.com.git
+
+# Compile it
+cd hectorcorrea
+go get github.com/go-sql-driver/mysql
+go build

@@ -1,0 +1,9 @@
+# Copy to the server
+
+scp hectorcorrea.com user@server:hc_go/
+scp views/* user@server:hc_go/views/
+scp public/* user@server:hc_go/public/
+
+# (needed for setup the first time)
+scp data/* user@server:hc_go/data
+scp misc/* user@server:hc_go/misc

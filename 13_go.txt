@@ -1,0 +1,11 @@
+# To install Go on the server (optional)
+
+# Reference: https://www.digitalocean.com/community/tutorials/how-to-install-go-1-6-on-ubuntu-14-04
+sudo curl -O https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz
+
+sudo tar -xvf go1.7.linux-amd64.tar.gz
+sudo mv go /usr/local
+
+# vi ~/.bashrc
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=~
