@@ -1,21 +1,9 @@
 Setting up an Ubuntu Server
 ================================
-Steps to setup my Ubuntu Server to host Node.js and Ruby on Rails web sites. The following tools are installed and configured:
+Steps to setup my Ubuntu Server to host my websites.
 
-* Nginx (as the front end web server)
+All my sites are written in Go at this time and there is no need to install any development tools to deploy them. However, there is Nginx, MySQL, and
+Upstart scripts to be configured.
 
-* Node.js (from source)
-  * Small node.js web site use as a demo.
-  * Config file to hook it to Nginx.
-  * Upstart script for Node.js web site.
-
-* Ruby (from source via ruby-install)
-  * chruby to select the current Ruby (Ruby, gems, paths)
-  * Small Sinatra web site to use as a demo.
-  * Uses thin as the app server.
-  * Config file to hook it to Nginx.
-
-  * A Rails web site (currently using a copy of one of my own sites)
-  * Uses thin as the app server.
-  * Config file to hook it to Nginx.
-  * Upstart script for Rails web site.
+Files under `nodejs/` and `ruby/` are what I used when my sites were
+written in Node.js and Ruby.

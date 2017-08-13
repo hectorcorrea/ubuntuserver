@@ -11,8 +11,3 @@ go build
 
 # Create the MySQL database
 mysql -u root < misc/createdb.sql
-
-# Create a local user
-CREATE USER 'bloguser'@'localhost' IDENTIFIED BY 'the-password';
-
-GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON blogdb.* TO 'bloguser'@'localhost';

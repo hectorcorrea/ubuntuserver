@@ -2,15 +2,15 @@
 #
 # references:
 # http://shapeshed.com/compiling-nodejs-from-source-on-ubuntu-10-04/
-# https://github.com/joyent/node/wiki/installation 
+# https://github.com/joyent/node/wiki/installation
 
 # install pre-requisites for Node.js
 sudo apt-get update
 sudo apt-get install build-essential openssl libssl-dev pkg-config
- 
+
 # Download source
 curl http://nodejs.org/dist/v0.10.35/node-v0.10.35.tar.gz > node-v0.10.35.source.tar.gz
- 
+
 # Install it (this takes a while)
 # node will be in /usr/local/bin/node and /usr/local/bin/npm
 tar -zxf node-v0.10.35.source.tar.gz
@@ -18,4 +18,3 @@ cd node-v0.10.35.source
 ./configure
 make
 sudo make install
- 

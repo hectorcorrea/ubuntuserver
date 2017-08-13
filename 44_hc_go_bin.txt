@@ -1,5 +1,4 @@
 # Copy to the server
-
 scp hectorcorrea.com user@server:hc_go/
 scp views/* user@server:hc_go/views/
 scp public/* user@server:hc_go/public/
@@ -7,3 +6,14 @@ scp public/* user@server:hc_go/public/
 # (needed for setup the first time)
 scp data/* user@server:hc_go/data
 scp misc/* user@server:hc_go/misc
+
+
+# Hook to Nginx (one time only)
+cp etc/nginx/conf.d/hectorcorrea.com /etc/nginx/conf.d/
+sudo service nginx reload
+
+
+# Init script (one time only)
+cp etc/init/hectorcorrea.conf /etc/init/hectorcorrea.conf
+start hectorcorrea
+restart hectorcorrea
