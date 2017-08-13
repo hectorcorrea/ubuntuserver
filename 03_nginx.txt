@@ -23,3 +23,6 @@ should show the nginx welcome page
 # To clear the nginx cache
 # http://stackoverflow.com/a/6896903/446681
 find /var/lib/nginx/cache -type f -delete
+
+# reload nginx
+sudo service nginx reload
