@@ -1,20 +1,8 @@
 # Reference: https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-14-04
 
 sudo apt-get update
-sudo apt-get install mysql-server-5.6
-
+sudo apt-get install mysql-server-5.7
 service mysql status
-sudo service mysql start
-
-sudo cp /etc/mysql/my.cnf /usr/share/mysql/my-default.cnf
-sudo mysql_install_db
-
-sudo mysql_secure_installation
-
-
-# Set MySQL root user's password
-/usr/bin/mysqladmin -u root password -p
-
 
 # Create a local user
 CREATE USER 'bloguser'@'localhost' IDENTIFIED BY 'the-password';
@@ -24,3 +12,15 @@ GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON blogdb.* TO 'bloguser'@'localho
 
 # To start MySQL on boot
 sudo update-rc.d mysql defaults
+
+# Misc
+sudo service mysql start
+
+sudo cp /etc/mysql/my.cnf /usr/share/mysql/my-default.cnf
+sudo mysql_install_db
+
+sudo mysql_secure_installation
+
+# Set MySQL root user's password
+/usr/bin/mysqladmin -u root password -p
+

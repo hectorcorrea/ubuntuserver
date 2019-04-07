@@ -1,17 +1,4 @@
 # Download and install Nginx
-#
-# Reference: http://nginx.org/en/linux_packages.html#stable
-
-# Add nginx's key to apt-get
-curl http://nginx.org/keys/nginx_signing.key > nginx_signing.key
-sudo apt-key add nginx_signing.key
-
-# Add the following two lines to /etc/apt/sources.list
-# use trusty for 10.04 and utopic for 10.10
-deb http://nginx.org/packages/ubuntu/ trusty nginx
-deb-src http://nginx.org/packages/ubuntu/ trusty nginx
-
-# Install it
 sudo apt-get update
 sudo apt-get install nginx
 
