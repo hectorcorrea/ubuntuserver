@@ -7,13 +7,28 @@ scp public/* user@server:hc_go/public/
 scp data/* user@server:hc_go/data
 scp misc/* user@server:hc_go/misc
 
-
+#
+# TODO: change to Apache
+#
 # Hook to Nginx (one time only)
 cp etc/nginx/conf.d/hectorcorrea.com /etc/nginx/conf.d/
 sudo service nginx reload
 
 
+#
 # Init script (one time only)
-cp etc/init/hectorcorrea.conf /etc/init/hectorcorrea.conf
-start hectorcorrea
-restart hectorcorrea
+#
+cp ./etc/systemd/system/hc.service /etc/systemd/system/hc.service
+chmod 664 /etc/systemd/system/hc.service
+sudo systemctl daemon-reload
+sudo systemctl start helloworld
+sudo systemctl status helloworld
+#sudo systemctl stop helloworld
+journalctl -f -u helloworld 
+
+# make sure restarts after reboot
+sudo systemctl enable helloworld
+
+
+
+

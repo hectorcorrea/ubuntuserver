@@ -1,7 +1,0 @@
-# Basic ubuntu packages that we'll need
-
-# install SSH server
-sudo apt-get install openssh-server
-
-# Check your Ubuntu version
-lsb_release -a

@@ -1,0 +1,20 @@
+# This file goes under /etc/systemd/system/
+# Must set permissions as chmod 664
+[Unit]
+Description=Startup script for H&K
+
+[Service]
+Type=simple
+Environment=DB_USER=***
+Environment=DB_PASSWORD=***
+Environment=DB_NAME=***
+Environment=BLOG_USR=***
+Environment=BLOG_PASS=***
+Environment=BLOG_SALT=***
+
+WorkingDirectory=/root/hk
+ExecStart=/root/hk/hk
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
