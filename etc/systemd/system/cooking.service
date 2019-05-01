@@ -12,7 +12,7 @@ Environment=BLOG_USR=***
 Environment=BLOG_PASS=***
 Environment=BLOG_SALT=***
 
-WorkingDirectory=/root/cooking_go
+WorkingDirectory=/root/cooking
 ExecStart=/root/cooking/cooking
 Restart=always
 

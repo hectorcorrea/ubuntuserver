@@ -41,9 +41,11 @@ sudo systemctl start mysql
 ```
 $ mysql 
 mysql> CREATE USER 'hellouser'@'localhost' IDENTIFIED BY 'the-password';
-mysqlCREATE DATABASE hellodb;
-mysqlGRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON hellodb.* TO 'hellouser'@'localhost';
-mysqlEXIT;
+
+
+mysql> CREATE DATABASE hellodb;
+mysql> GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON hellodb.* TO 'hellouser'@'localhost';
+mysql> EXIT;
 ```
 
 Login as our new `hellouser` and test again:

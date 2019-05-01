@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Creates the systemd script for our helloworld service
+# Sets up the systemd script for our helloworld test service
 #
 cp ./etc/systemd/system/helloworld.service /etc/systemd/system/helloworld.service
 chmod 664 /etc/systemd/system/helloworld.service

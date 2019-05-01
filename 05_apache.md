@@ -10,19 +10,27 @@ $ sudo apt install apache2
 Configure the [Uncomplicated Firewall](https://wiki.ubuntu.com/UncomplicatedFirewall) to allow Apache on port 80 and 443 (SSL)
 
 ```
-$ sudo ufw app list
-$ sudo ufw allow 'Apache Full'
+# will show inactive
 $ sudo ufw status
 
-$ cat /etc/ufw/ufw.conf
-# will show ENABLED=no, after the next command and a reboot should show "yes"
+$ sudo ufw app list
+$ sudo ufw allow 'Apache Full'
 ```
 
-It's important to also allow SSH on port 22
+
+It's important **very important** to also allow SSH on port 22
 
 ```
 $ ufw allow 22/tcp
+```
+
+
+Enable UFW to start on reboot:
+```
 $ sudo ufw enable
+
+$ cat /etc/ufw/ufw.conf
+# will show ENABLED=yes
 ```
 
 Check that Apache is running
@@ -64,6 +72,8 @@ cat /var/log/apache2/error.log
 
 
 ## References
+
+* According to [this](https://ubuntuforums.org/showthread.php?t=1209173) "Apache Full" in `ufw` enables Apache for ports 80 and 443, whereas "Apache" only enables port 80, and "Apache Secure" only enables port 443.
 
 * https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-18-04
 
