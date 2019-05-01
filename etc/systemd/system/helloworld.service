@@ -6,8 +6,8 @@ Description=My hello world test service
 [Service]
 Type=simple
 Environment=DB_USER=userxyz
-WorkingDirectory=/root/helloservice/
-ExecStart=/root/helloservice/helloworld
+WorkingDirectory=/root/ubuntuserver/helloworld
+ExecStart=/root/ubuntuserver/helloworld/helloworld_linux
 Restart=always
 
 [Install]

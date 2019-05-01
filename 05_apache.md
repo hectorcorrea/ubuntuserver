@@ -7,7 +7,7 @@ $ sudo apt update
 $ sudo apt install apache2
 ```
 
-Configure the [Uncomplicated Firewall](https://wiki.ubuntu.com/UncomplicatedFirewall) to allow Apache and SSH on port 22
+Configure the [Uncomplicated Firewall](https://wiki.ubuntu.com/UncomplicatedFirewall) to allow Apache on port 80 and 443 (SSL)
 
 ```
 $ sudo ufw app list
@@ -16,7 +16,11 @@ $ sudo ufw status
 
 $ cat /etc/ufw/ufw.conf
 # will show ENABLED=no, after the next command and a reboot should show "yes"
+```
 
+It's important to also allow SSH on port 22
+
+```
 $ ufw allow 22/tcp
 $ sudo ufw enable
 ```
@@ -28,13 +32,13 @@ $ curl localhost:80
 ```
 
 
-## install mod_proxy
+## Install mod_proxy
 
-I certainly need this to enable `mod_proxy`:
+In order to use Apache as a reverse proxy (instead of using Nginx) I need to enable `mod_proxy`:
+
 ```
 sudo a2enmod proxy
 sudo a2enmod proxy_http
-# sudo a2enmod proxy_html
 ```
 
 Edit file `/etc/apache2/sites-enabled/000-default.conf` and put this 
