@@ -71,6 +71,42 @@ cat /var/log/apache2/error.log
 ```
 
 
+To check the syntax 
+```
+apache2ctl -S 
+```
+
+
+
+
+It seems that DocumentRoot is ignore when I use ProxyPass, like in the following example:
+
+```
+<VirtualHost *:80>
+        ServerName 67.205.161.183
+
+        DocumentRoot /var/www/html
+
+        ProxyPreserveHost On
+        ProxyPass        "/" "http://localhost:9001/"
+        ProxyPassReverse "/" "http://localhost:9001/"
+</VirtualHost>
+```
+
+People recomment using mod_rewrite instead of ProxyPass to work around this,
+
+https://serverfault.com/questions/42849/apache-proxypass-in-virtualhost-shouldnt-it-override-main
+
+This is an [interesting approach](https://stackoverflow.com/a/16262697/446681):
+
+```
+    ProxyPass /specialfolder !
+    ProxyPass / http://localhost:8080/tomcat-webapp/
+    ProxyPassReverse / http://localhost:8080/tomcat-webapp/
+    Alias /specialfolder /var/www/specialfolder
+```
+
+
 ## References
 
 * According to [this](https://ubuntuforums.org/showthread.php?t=1209173) "Apache Full" in `ufw` enables Apache for ports 80 and 443, whereas "Apache" only enables port 80, and "Apache Secure" only enables port 443.
