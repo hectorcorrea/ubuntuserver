@@ -11,9 +11,11 @@ Environment=DB_NAME=***
 Environment=BLOG_USR=***
 Environment=BLOG_PASS=***
 Environment=BLOG_SALT=***
+Environment=BLOG_GUEST_USR=***
+Environment=BLOG_GUEST_PASS=***
 
 WorkingDirectory=/root/hk
-ExecStart=/root/hk/hk
+ExecStart=/root/hk/hk -address localhost:3003
 Restart=always
 
 [Install]
