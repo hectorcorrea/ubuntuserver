@@ -234,6 +234,15 @@ $ mysql -u hellouser -p
 mysql> USE hellodb;
 ```
 
+Make sure to configure the database to use UTF-8 as the character set, by default MySQL uses Latin 1.
+
+```
+$ mysql -u hellouser -p
+mysql> USE hellodb;
+mysql> SELECT @@character_set_database, @@collation_database;
+mysql> ALTER DATABASE hellodb CHARACTER SET utf8 COLLATE utf8_general_ci;
+```
+
 
 ## References
 * https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04
