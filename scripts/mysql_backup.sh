@@ -3,9 +3,6 @@
 DATE=`date --iso-8601=date`
 FOLDER="/some/path/$DATE"
 
-echo $FOLDER
-exit 1
-
 if [ ! -d "$FOLDER" ]; then
 	echo "Creating folder $FOLDER"
   	mkdir $FOLDER
