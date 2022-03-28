@@ -9,7 +9,4 @@ sudo systemctl daemon-reload
 sudo systemctl start helloworld
 sudo systemctl status helloworld
 
-journalctl -u helloworld 
-journalctl -f -u helloworld 
-
 sudo systemctl enable helloworld

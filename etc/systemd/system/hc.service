@@ -5,15 +5,12 @@ Description=Startup script for hectorcorrea.com
 
 [Service]
 Type=simple
-Environment=DB_USER=***
-Environment=DB_PASSWORD=***
-Environment=DB_NAME=***
 Environment=BLOG_USR=***
 Environment=BLOG_PASS=***
 Environment=BLOG_SALT=***
 
 WorkingDirectory=/root/hectorcorrea.com
-ExecStart=/root/hectorcorrea.com/hectorcorrea.com
+ExecStart=/root/hectorcorrea.com/hectorcorrea.com -port 9001
 Restart=always
 
 [Install]

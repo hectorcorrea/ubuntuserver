@@ -4,7 +4,7 @@
 // also tests reading an ENV variable and a file from disk.
 //
 // Build with:
-//		GOOS=linux go build -o helloworld_linux
+//		GOOS=linux go build -o helloworld_linux main.go
 //
 package main
 
@@ -25,35 +25,37 @@ func main() {
 	// Start the web server
 	webAddress := fmt.Sprintf("localhost:%d", *port)
 	log.Printf("Listening for requests at: http://%s", webAddress)
-	log.Printf("Environment DB_USER: %s", os.Getenv("DB_USER"))
+	log.Printf("Environment DB_USER: %s", envVariable())
 	log.Printf("Endpoints:")
 	log.Printf("\t /hello/")
 	log.Printf("\t /file/")
 	log.Printf("\t /panic/")
 
-	http.HandleFunc("/file/", filePages)
-	http.HandleFunc("/hello/", helloPages)
-	http.HandleFunc("/panic/", panicPages)
-	http.HandleFunc("/", rootPages)
+	http.HandleFunc("/file/", filePage)
+	http.HandleFunc("/hello/", helloPage)
+	http.HandleFunc("/panic/", panicPage)
+	http.HandleFunc("/", rootPage)
 	err := http.ListenAndServe(webAddress, nil)
 	if err != nil {
 		log.Fatal("Failed to start the web server: ", err)
 	}
 }
 
-func rootPages(resp http.ResponseWriter, req *http.Request) {
+func rootPage(resp http.ResponseWriter, req *http.Request) {
 	log.Printf("root endpoint")
-	msg := fmt.Sprintf("root for DB_USER: %s", os.Getenv("DB_USER"))
+	msg := fmt.Sprintf("root page, DB_USER: %s\r\n", envVariable())
 	fmt.Fprint(resp, msg)
 }
 
-func helloPages(resp http.ResponseWriter, req *http.Request) {
+func helloPage(resp http.ResponseWriter, req *http.Request) {
 	log.Printf("hello endpoint")
-	msg := fmt.Sprintf("hello at %s", utcNow())
+	const time_format_now string = "2006-01-02 15:04:05.000" // yyyy-mm-dd hh:mm:ss.xxx
+	now := time.Now().Format(time_format_now)
+	msg := fmt.Sprintf("hello at %s\r\n", now)
 	fmt.Fprint(resp, msg)
 }
 
-func filePages(resp http.ResponseWriter, req *http.Request) {
+func filePage(resp http.ResponseWriter, req *http.Request) {
 	log.Printf("file endpoint")
 	filename := "./hello.txt"
 	bytes, err := ioutil.ReadFile(filename)
@@ -64,15 +66,16 @@ func filePages(resp http.ResponseWriter, req *http.Request) {
 	}
 }
 
-func panicPages(resp http.ResponseWriter, req *http.Request) {
+func panicPage(resp http.ResponseWriter, req *http.Request) {
 	log.Printf("panic endpoint")
 	panic("we hit the panic endpoint")
 }
 
-func utcNow() string {
-	t := time.Now().UTC()
-	s := fmt.Sprintf("%d-%02d-%02d %02d:%02d:%02d",
-		t.Year(), t.Month(), t.Day(),
-		t.Hour(), t.Minute(), t.Second())
-	return s
+// Look for a test ENV variable
+func envVariable() string {
+	value := os.Getenv("DB_USER")
+	if value == "" {
+		return "(not set)"
+	}
+	return value
 }

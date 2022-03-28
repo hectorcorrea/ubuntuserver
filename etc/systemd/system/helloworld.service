@@ -1,13 +1,13 @@
 # This file goes under /etc/systemd/system/
 # Must set permissions as chmod 664
 [Unit]
-Description=My hello world test service
+Description=Hello world test service
 
 [Service]
 Type=simple
-Environment=DB_USER=userxyz
+Environment=DB_USER=fake-user
 WorkingDirectory=/root/ubuntuserver/helloworld
-ExecStart=/root/ubuntuserver/helloworld/helloworld_linux
+ExecStart=/root/ubuntuserver/helloworld/helloworld_linux -port 9001
 Restart=always
 
 [Install]
