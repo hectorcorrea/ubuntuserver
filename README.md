@@ -64,7 +64,9 @@ Deploy the code for HectorCorrea.com *and then* run the following script to set 
 sudo ./04_hc.sh
 ```
 
-## Other useful information
+## SSL Certificates
+View https://github.com/hectorcorrea/ubuntuserver/tree/main/certs.md
 
+## Other useful information
 * [SystemD](https://github.com/hectorcorrea/ubuntuserver/tree/main/systemd.md)
 * [Certificates](https://github.com/hectorcorrea/ubuntuserver/tree/main/certs.md)

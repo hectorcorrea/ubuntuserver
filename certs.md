@@ -1,24 +1,27 @@
 # Installing SSL certificates
 
-Install `certbot`
+Install `certbot` as per the instructions in https://certbot.eff.org/instructions. For Ubuntu 20 the commands are:
+
 ```
-$ sudo apt-get update
-$ sudo apt-get install software-properties-common
-$ sudo add-apt-repository universe
-$ sudo add-apt-repository ppa:certbot/certbot
-$ sudo apt-get update
-$ sudo apt-get install certbot python-certbot-apache 
+sudo snap install core
+sudo snap refresh core
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+sudo certbot --apache
 ```
 
-generate the certificates and configure Apache to serve the SSL traffic:
-```
-$ sudo certbot --apache
+There is no need to run a cron job to renew the certificates, this is now handled automatically. You can test it via:
 
-   Your cert will expire on 2019-07-30. To obtain a new or tweaked
-   version of this certificate in the future, simply run certbot again
-   with the "certonly" option. To non-interactively renew *all* of
-   your certificates, run "certbot renew"
+```
+sudo certbot renew --dry-run
+```
+
+and you can view the "scheduled task" via:
+
+```
+systemctl list-timers
 ```
 
 ## References
 * https://certbot.eff.org/lets-encrypt/ubuntubionic-apache
+* https://eff-certbot.readthedocs.io/en/stable/install.html
