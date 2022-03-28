@@ -1,5 +1,2 @@
 # Ignore the mac executable
 /helloworld/helloworld
-
-# Ignore notes from the old Ubuntu 14 machine
-/ub14_oldnotes

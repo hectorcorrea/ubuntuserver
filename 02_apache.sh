@@ -18,10 +18,8 @@ curl localhost:80
 sudo a2enmod proxy
 sudo a2enmod proxy_http
 
-# Wires Apache to our helloworld site
-cp ./etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf
-
 systemctl restart apache2
 
+# To wire Apache to our helloworld site
+# cp ./etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 
-# reboot
