@@ -46,6 +46,7 @@ In order to use Apache as a reverse proxy (instead of using Nginx) I need to ena
 ```
 $ sudo a2enmod proxy
 $ sudo a2enmod proxy_http
+$ sudo a2enmod rewrite
 ```
 
 Edit file `/etc/apache2/sites-enabled/000-default.conf` and put this 

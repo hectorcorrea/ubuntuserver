@@ -21,5 +21,5 @@ sudo a2enmod proxy_http
 systemctl restart apache2
 
 # To wire Apache to our helloworld site
-# cp ./etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf
+# cp ./etc/apache2/sites-enabled/000-helloworld.conf /etc/apache2/sites-enabled/000-helloworld.conf
 

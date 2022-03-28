@@ -10,7 +10,7 @@ Environment=BLOG_PASS=***
 Environment=BLOG_SALT=***
 
 WorkingDirectory=/root/cooking
-ExecStart=/root/cooking/cooking -port 9002
+ExecStart=/root/cooking/cooking -address "localhost:9002"
 Restart=always
 
 [Install]

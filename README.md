@@ -27,7 +27,7 @@ curl localhost:9001/hello/
 ```
 
 ## Setting up Apache
-See [apache.md] for instruction on how to setup Apache or run the following scrip:
+See [apache.md](https://github.com/hectorcorrea/ubuntuserver/blob/main/apache.md) for instructions on how to setup Apache or run the following scrip:
 
 ```
 chmod u+x ./02_apache.sh
@@ -38,7 +38,7 @@ sudo ./02_apache.sh
 To wire Apache to the "hello world" website:
 
 ```
-cp ./etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf
+cp ./etc/apache2/sites-enabled/000-helloworld.conf /etc/apache2/sites-enabled/000-helloworld.conf
 systemctl restart apache2
 ```
 
@@ -53,7 +53,8 @@ curl localhost:80/hello/
 To disable the "hello world" service:
 
 ```
-sudo ./03_bye_helloworld_service.sh
+chmod u+x 03_bye_helloworld_service.sh
+./03_bye_helloworld_service.sh
 ```
 
 ## Site: HectorCorrea.com
