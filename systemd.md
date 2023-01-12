@@ -38,6 +38,14 @@ $ sudo systemctl enable helloworld
 ```
 
 
+## Clearning old logs
+
+Retain only the last 100 days (https://unix.stackexchange.com/questions/139513/how-to-clear-journalctl)
+
+```
+journalctl --vacuum-time=100d
+```
+
 ## References
 * [Systemd Service File example](https://www.shellhacks.com/systemd-service-file-example/)
 * [Understanding Systemd Units and Unit Files](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files)
